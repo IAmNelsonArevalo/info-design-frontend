@@ -7,18 +7,20 @@ interface ITable {
     data: any;
 }
 
-const Table: React.FC<ITable> = ({ headings, data }): JSX.Element => {
+const Table: React.FC<ITable> = ({ headings, data = [] }): JSX.Element => {
     const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({
         key: '',
         direction: 'asc',
     });
+
+    console.log(data)
 
     const handleSort = (key: string) => {
         const direction = sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc';
         setSortConfig({ key, direction });
     };
 
-    const sortedData = [...data].sort((a, b) => {
+    const sortedData = Array.isArray(data) ? data.sort((a: any, b: any) => {
         const index = Object.values(headings).findIndex((item: any) => item === sortConfig.key);
         const key = Object.keys(headings)[index];
 
@@ -39,7 +41,7 @@ const Table: React.FC<ITable> = ({ headings, data }): JSX.Element => {
                 return a;
             }
         }
-    });
+    }) : [];
 
     return (
         <Card className="h-auto w-full">
