@@ -12,16 +12,16 @@ const ClientGraphics: React.FC = (): JSX.Element => {
     const {useClients} = useScreensHooks();
     const {startDate, handleChangeRange, clients} = useClients();
 
-    const comercial_consumption = clients.map((item: any) => item.consumo_comercial);
-    const industrial_consumption = clients.map((item: any) => item.consumo_industrial);
-    const residential_consumption = clients.map((item: any) => item.consumo_residencial);
-    const comercial_cost = clients.map((item: any) => item.costo_comercial);
-    const industrial_cost = clients.map((item: any) => item.costo_industrial);
-    const residential_cost = clients.map((item: any) => item.costo_residencial);
-    const residential_lost = clients.map((item: any) => item.perdidas_residencial);
-    const comercial_lost = clients.map((item: any) => item.perdidas_residencial);
-    const industrial_lost = clients.map((item: any) => item.perdidas_residencial);
-    const lines = clients.map((item: any) => item.Linea);
+    const comercial_consumption = clients ? clients.map((item: any) => item.consumo_comercial) : [];
+    const industrial_consumption = clients ? clients.map((item: any) => item.consumo_industrial) : [];
+    const residential_consumption = clients ? clients.map((item: any) => item.consumo_residencial) : [];
+    const comercial_cost = clients ? clients.map((item: any) => item.costo_comercial) : [];
+    const industrial_cost = clients ? clients.map((item: any) => item.costo_industrial) : [];
+    const residential_cost = clients ? clients.map((item: any) => item.costo_residencial) : [];
+    const residential_lost = clients ? clients.map((item: any) => item.perdidas_residencial) : [];
+    const comercial_lost = clients ? clients.map((item: any) => item.perdidas_residencial) : [];
+    const industrial_lost = clients ? clients.map((item: any) => item.perdidas_residencial) : [];
+    const lines = clients ? clients.map((item: any) => item.Linea) : [];
 
     ChartJS.register(ArcElement, Tooltip, Legend, Title, BarElement, LinearScale, CategoryScale, PointElement, LineElement);
 
