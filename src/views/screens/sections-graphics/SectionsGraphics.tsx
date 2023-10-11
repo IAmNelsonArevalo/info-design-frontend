@@ -23,10 +23,10 @@ const SectionsGraphics: React.FC = (): JSX.Element => {
     const {useSections} = useScreensHooks();
     const {startDate, handleChangeRange, sections} = useSections();
 
-    const lines = sections ? sections.map((item: any) => item.Linea) : [];
-    const cost = sections ? sections.map((item: any) => item.costo) : [];
-    const lost = sections ? sections.map((item: any) => item.perdidas) : [];
-    const consumption = sections ? sections.map((item: any) => item.consumo) : [];
+    const lines = Array.isArray(sections) ? sections.map((item: any) => item.Linea) : [];
+    const cost = Array.isArray(sections) ? sections.map((item: any) => item.costo) : [];
+    const lost = Array.isArray(sections) ? sections.map((item: any) => item.perdidas) : [];
+    const consumption = Array.isArray(sections) ? sections.map((item: any) => item.consumo) : [];
 
     ChartJS.register(ArcElement, Tooltip, Legend, Title, BarElement, LinearScale, CategoryScale, PointElement, LineElement);
 
